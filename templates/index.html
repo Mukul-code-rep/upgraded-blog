@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Clean Blog - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/favicon.ico')}}" />
+    </head>
+    <body>
+        {% include "header.html" %}
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for dic in data %}
+                    <!-- Post preview-->
+                        <div class="post-preview">
+                            <a href="{{ url_for('show_post', index=dic.id) }}">
+                                <h2 class="post-title">{{ dic['title'] }}</h2>
+                                <h3 class="post-subtitle">{{ dic['subtitle'] }}</h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="#!">{{ dic['author'] }}</a>
+                                on {{ dic['date'] }}
+                            </p>
+                        </div>
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                    {% endfor %}
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "footer.html" %}
+    </body>
+</html>
